@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:CDub_Maui_Categories_API_Client.Models"
+             x:Class="CDub_Maui_Categories_API_Client.Views.CategoryListPage"
+             NavigationPage.HasNavigationBar="True"
+             Title="Categories - API Client">
+   
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+ Add" Clicked="OnAddItemClicked">
+            <ToolbarItem.IconImageSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <On Platform="Android, WinUI" Value="plus.png" />
+                </OnPlatform>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <VerticalStackLayout>
+        <CollectionView x:Name="collectionView"
+                    Margin="20"
+                    SelectionMode="Single"
+                    SelectionChanged="collectionView_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Category">
+                    
+                    <Grid Padding="20,20,0,0"
+                      ColumnDefinitions="0.50*, 0.25*">
+                           <Label Text="{Binding Path=Name}" 
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="Start"/>
+                        
+                           <Label Text="{Binding Path=DisplayOrder}" 
+                           Grid.Column="1"
+                           VerticalTextAlignment="Center" 
+                           HorizontalOptions="Center"/>
+                    </Grid>
+                    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
