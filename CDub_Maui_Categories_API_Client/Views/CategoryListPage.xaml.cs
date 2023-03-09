@@ -44,5 +44,8 @@ public partial class CategoryListPage : ContentPage
         return _categoryList;
     }
 
-   
+    private void SwipeItem_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }

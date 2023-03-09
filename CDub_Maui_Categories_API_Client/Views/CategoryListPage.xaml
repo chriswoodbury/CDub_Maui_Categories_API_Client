@@ -4,8 +4,45 @@
              xmlns:models="clr-namespace:CDub_Maui_Categories_API_Client.Models"
              x:Class="CDub_Maui_Categories_API_Client.Views.CategoryListPage"
              NavigationPage.HasNavigationBar="True"
-             Title="Categories - API Client">
-   
+             Title="Categories">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="bgColor">White</Color>
+            <Color x:Key="fgColor">Purple</Color>
+            <Color x:Key="btnColor">Firebrick</Color>
+            <Color x:Key="btnTextColor">White</Color>
+            <x:Double x:Key="fontSize">17</x:Double>
+        </ResourceDictionary>
+        <Style x:Key="btnStyle"
+               TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Purple" />
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="Margin" Value="0,30,0,50" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="FontAttributes" Value="None" />
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+ Add" Clicked="OnAddItemClicked">
             <ToolbarItem.IconImageSource>
@@ -16,27 +53,66 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <VerticalStackLayout>
-        <CollectionView x:Name="collectionView"
+
+        <Border StrokeThickness="4"
+        Margin="0,15,0,0"
+        StrokeShape="RoundRectangle 40,0,0,40"
+        Background="#2B0B98"
+        Padding="6,8"
+        HorizontalOptions="Center">
+            <Border.Stroke>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="Orange"
+                          Offset="0.1" />
+                    <GradientStop Color="Brown"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Stroke>
+            <Label Text="REST API"
+                   Padding="15"
+              TextColor="White"
+               FontSize="18"
+               FontAttributes="Bold" />
+          
+        </Border>
+
+        <ScrollView>
+            <CollectionView x:Name="collectionView"
                     Margin="20"
                     SelectionMode="Single"
                     SelectionChanged="collectionView_SelectionChanged">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Category">
-                    
-                    <Grid Padding="20,20,0,0"
-                      ColumnDefinitions="0.50*, 0.25*">
-                           <Label Text="{Binding Path=Name}" 
-                           VerticalTextAlignment="Center"
-                           HorizontalOptions="Start"/>
-                        
-                           <Label Text="{Binding Path=DisplayOrder}" 
-                           Grid.Column="1"
-                           VerticalTextAlignment="Center" 
-                           HorizontalOptions="Center"/>
-                    </Grid>
-                    
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Category" >
+                        <Border Stroke="Indigo"
+                        StrokeThickness="2"
+                        Background="White"
+                        Padding="16,28"
+                        HorizontalOptions="Center">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8,8,8,8" />
+                                </Border.StrokeShape>
+
+                                <Grid Padding="20,0,0,0" 
+                           ColumnDefinitions="0.50*, 0.25*" >
+
+                                    <Label Text="{Binding Path=Name}" 
+                             FontSize="{DynamicResource fontSize}"
+                             VerticalTextAlignment="Center"
+                             HorizontalOptions="Start"/>
+
+                                    <Label Text="{Binding Path=DisplayOrder}"
+                             FontSize="{DynamicResource fontSize}"
+                             Grid.Column="1"
+                             VerticalTextAlignment="Center" 
+                             HorizontalOptions="Center"/>
+
+                                </Grid>
+
+                            </Border>
+                      
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>

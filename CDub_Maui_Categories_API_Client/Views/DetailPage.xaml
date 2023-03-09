@@ -2,8 +2,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CDub_Maui_Categories_API_Client.Views.DetailPage"
-             NavigationPage.HasNavigationBar="False"
-             Title="Category Detail Page">
+             NavigationPage.HasNavigationBar="True"
+             Title="Category Detail">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="bgColor">White</Color>
+            <Color x:Key="fgColor">Purple</Color>
+            <Color x:Key="btnColor">Firebrick</Color>
+            <Color x:Key="btnTextColor">White</Color>
+            <x:Double x:Key="fontSize">17</x:Double>
+        </ResourceDictionary>
+        <Style x:Key="btnStyle"
+               TargetType="Button">
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Indigo" />
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="Margin" Value="0,30,0,50" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="FontAttributes" Value="None" />
+        </Style>
+    </ContentPage.Resources>
+
     <VerticalStackLayout Margin="30">
         <Label Text="a" x:Name="lblPageHeading" HorizontalOptions="Center" FontSize="Large" TextColor="Indigo" />
         <Label Text="Name:" Margin="0,30,0,0" />
@@ -16,12 +39,15 @@
         <Line X1="40" X2="330" Y1="150" Y2="150" Stroke="Black" />
         <Button Text="Save" 
                 Margin="20,25,20,15"
+                Style="{DynamicResource btnStyle}"
                 Clicked="SaveButton_Clicked" />
         <Button Text="Delete"
                 Margin="20,15,20,15"
+                Style="{DynamicResource btnStyle}"
                 Clicked="DeleteButton_Clicked" />
         <Button Text="Cancel" 
                   Margin="20,15,20,15"
+                Style="{DynamicResource btnStyle}"
                 Clicked="CancelButton_Clicked" />
     </VerticalStackLayout>
 </ContentPage>
