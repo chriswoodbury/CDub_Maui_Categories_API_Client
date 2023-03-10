@@ -1,23 +1,24 @@
 using CDub_Maui_Categories_API_Client.Models;
+using CDub_Maui_Categories_API_Client.Services;
 
 namespace CDub_Maui_Categories_API_Client.Views;
 
 public partial class CategoryListPage : ContentPage
 {
-    List<Category> _categories;
+    ICategoryService _categoryService;
 
-    public CategoryListPage()
+    public CategoryListPage(ICategoryService service)
     {
         InitializeComponent();
-
+        _categoryService= service;
     }
 
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        collectionView.ItemsSource = await GetCategories();
-
-        //collectionView.ItemsSource = await _todoService.GetTasksAsync();
+        //collectionView.ItemsSource = await GetCategories();
+       
+        collectionView.ItemsSource = await _categoryService.GetAllCategories();
     }
 
     async void OnAddItemClicked(object sender, EventArgs e)
@@ -33,19 +34,11 @@ public partial class CategoryListPage : ContentPage
 
         await Navigation.PushAsync(new DetailPage(item));
     }
-        
-    public async Task<IEnumerable<Category>> GetCategories()
-    {
-        List<Category> _categoryList = new List<Category>();
-        _categoryList.Add(new Category { Id = 1, Name = "Category 1", DisplayOrder = 1 });
-        _categoryList.Add(new Category { Id = 2, Name = "Category 2", DisplayOrder = 2 });
-        _categoryList.Add(new Category { Id = 3, Name = "Category 3", DisplayOrder = 3 });
 
-        return _categoryList;
+    async void ToolbarItem_Clicked(object sender, EventArgs e)
+    {
+        collectionView.ItemsSource = await _categoryService.GetAllCategories();
     }
 
-    private void SwipeItem_Clicked(object sender, EventArgs e)
-    {
-
-    }
+   
 }

@@ -1,4 +1,7 @@
-﻿namespace CDub_Maui_Categories_API_Client;
+﻿using CDub_Maui_Categories_API_Client.Services;
+using CDub_Maui_Categories_API_Client.Views;
+
+namespace CDub_Maui_Categories_API_Client;
 
 public static class MauiProgram
 {
@@ -13,6 +16,14 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+        builder.Services.AddSingleton<IHttpsClientHandlerService, HttpsClientHandlerService>();
+        builder.Services.AddSingleton<ICategoryService, CategoryService>();
+        builder.Services.AddSingleton<IRestService, RestService>();
+	
+        builder.Services.AddSingleton<CategoryListPage>();
+		builder.Services.AddSingleton<App>();
+		
+
+        return builder.Build();
 	}
 }

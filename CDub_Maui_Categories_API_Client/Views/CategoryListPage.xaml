@@ -11,7 +11,7 @@
             <Color x:Key="fgColor">Purple</Color>
             <Color x:Key="btnColor">Firebrick</Color>
             <Color x:Key="btnTextColor">White</Color>
-            <x:Double x:Key="fontSize">17</x:Double>
+            <x:Double x:Key="fontSize">15</x:Double>
         </ResourceDictionary>
         <Style x:Key="btnStyle"
                TargetType="Button">
@@ -51,15 +51,23 @@
                 </OnPlatform>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
+        <ToolbarItem Text="Refresh" Clicked="ToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <On Platform="Android, WinUI" Value="plus.png" />
+                </OnPlatform>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
+
     <VerticalStackLayout>
 
         <Border StrokeThickness="4"
-        Margin="0,15,0,0"
-        StrokeShape="RoundRectangle 40,0,0,40"
-        Background="#2B0B98"
-        Padding="6,8"
-        HorizontalOptions="Center">
+            Margin="0,15,0,0"
+            StrokeShape="RoundRectangle 40,0,0,40"
+            Background="#2B0B98"
+            Padding="6,8"
+            HorizontalOptions="Center">
             <Border.Stroke>
                 <LinearGradientBrush EndPoint="0,1">
                     <GradientStop Color="Orange"
@@ -84,31 +92,44 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Category" >
                         <Border Stroke="Indigo"
-                        StrokeThickness="2"
-                        Background="White"
-                        Padding="16,28"
-                        HorizontalOptions="Center">
+                             StrokeThickness="2"
+                             Background="White"
+                             Padding="16,18"
+                             HorizontalOptions="Center">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="8,8,8,8" />
                                 </Border.StrokeShape>
 
                                 <Grid Padding="20,0,0,0" 
-                           ColumnDefinitions="0.50*, 0.25*" >
+                                   ColumnDefinitions="0.50*, 0.50*" RowDefinitions="Auto, Auto">
+
+                                    <Label Text="Name:" 
+                                           FontSize="{DynamicResource fontSize}"
+                                           TextColor="Firebrick"/>
 
                                     <Label Text="{Binding Path=Name}" 
-                             FontSize="{DynamicResource fontSize}"
-                             VerticalTextAlignment="Center"
-                             HorizontalOptions="Start"/>
+                                            Grid.Row="1"
+                                            FontSize="{DynamicResource fontSize}"
+                                            FontAttributes="Bold"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalOptions="Start"/>
 
-                                    <Label Text="{Binding Path=DisplayOrder}"
-                             FontSize="{DynamicResource fontSize}"
-                             Grid.Column="1"
-                             VerticalTextAlignment="Center" 
-                             HorizontalOptions="Center"/>
+                                    <Label Text="Display Order:" 
+                                           Grid.Column="1"
+                                           FontSize="{DynamicResource fontSize}"
+                                           TextColor="Firebrick"/>
+
+                                     <Label Text="{Binding Path=DisplayOrder}"
+                                            FontSize="{DynamicResource fontSize}"
+                                            FontAttributes="Bold"
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            VerticalTextAlignment="Center" 
+                                            HorizontalOptions="Center"/>
 
                                 </Grid>
 
-                            </Border>
+                        </Border>
                       
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
