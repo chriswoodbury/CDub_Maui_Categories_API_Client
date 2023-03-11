@@ -21,6 +21,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IRestService, RestService>();
 	
         builder.Services.AddSingleton<CategoryListPage>();
+		builder.Services.AddTransient<DetailPage>();
 		builder.Services.AddSingleton<App>();
 		
 

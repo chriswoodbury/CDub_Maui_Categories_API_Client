@@ -3,6 +3,7 @@ using System.Text;
 using CDub_Maui_Categories_API_Client.Models;
 using System.Text.Json;
 
+
 namespace CDub_Maui_Categories_API_Client.Services
 {
     public class RestService : IRestService
@@ -46,7 +47,31 @@ namespace CDub_Maui_Categories_API_Client.Services
             }
 
             return Items.OrderBy(o => o.DisplayOrder).ToList();
-               ;
+               
+        }
+
+        public async Task SaveItemAsync(Category category, bool isNewItem)
+        {
+            Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+
+            try
+            {
+                string json = JsonSerializer.Serialize<Category>(category, _serializerOptions);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = null;
+                if (isNewItem)
+                    response = await _client.PostAsync(uri, content);
+                else
+                    response = await _client.PutAsync(uri, content);
+
+                if (response.IsSuccessStatusCode)
+                    Debug.WriteLine(@"\tCategory successfully saved.");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
         }
     }
 }

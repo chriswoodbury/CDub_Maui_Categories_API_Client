@@ -44,14 +44,15 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+ Add" Clicked="OnAddItemClicked">
+         <ToolbarItem Text="Refresh" Clicked="ToolbarItem_Clicked">
             <ToolbarItem.IconImageSource>
                 <OnPlatform x:TypeArguments="ImageSource">
                     <On Platform="Android, WinUI" Value="plus.png" />
                 </OnPlatform>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
-        <ToolbarItem Text="Refresh" Clicked="ToolbarItem_Clicked">
+        
+        <ToolbarItem Text="+ Add" Clicked="OnAddItemClicked">
             <ToolbarItem.IconImageSource>
                 <OnPlatform x:TypeArguments="ImageSource">
                     <On Platform="Android, WinUI" Value="plus.png" />
@@ -81,7 +82,7 @@
               TextColor="White"
                FontSize="18"
                FontAttributes="Bold" />
-          
+            
         </Border>
 
         <ScrollView>
@@ -117,6 +118,7 @@
                                     <Label Text="Display Order:" 
                                            Grid.Column="1"
                                            FontSize="{DynamicResource fontSize}"
+                                           HorizontalOptions="Center"
                                            TextColor="Firebrick"/>
 
                                      <Label Text="{Binding Path=DisplayOrder}"

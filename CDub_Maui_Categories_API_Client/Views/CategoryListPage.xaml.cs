@@ -23,7 +23,7 @@ public partial class CategoryListPage : ContentPage
 
     async void OnAddItemClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new DetailPage(new Category()));
+        await Navigation.PushAsync(new DetailPage(_categoryService, new Category()));
 
     }
 
@@ -32,7 +32,7 @@ public partial class CategoryListPage : ContentPage
         if (e.CurrentSelection.FirstOrDefault() is not Category item)
             return;
 
-        await Navigation.PushAsync(new DetailPage(item));
+        await Navigation.PushAsync(new DetailPage(_categoryService, item));
     }
 
     async void ToolbarItem_Clicked(object sender, EventArgs e)
