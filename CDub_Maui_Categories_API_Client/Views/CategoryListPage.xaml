@@ -92,7 +92,19 @@
                     SelectionChanged="collectionView_SelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Category" >
-                        <Border Stroke="Indigo"
+
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems Mode="Reveal">
+                                    <SwipeItem Text="Delete"
+                                       IconImageSource="delete.png"
+                                       BackgroundColor="Red"
+                                       Clicked="SwipeItem_Clicked" />
+                                   
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <Border Stroke="Indigo"
                              StrokeThickness="2"
                              Background="White"
                              Padding="16,18"
@@ -121,7 +133,7 @@
                                            HorizontalOptions="Center"
                                            TextColor="Firebrick"/>
 
-                                     <Label Text="{Binding Path=DisplayOrder}"
+                                    <Label Text="{Binding Path=DisplayOrder}"
                                             FontSize="{DynamicResource fontSize}"
                                             FontAttributes="Bold"
                                             Grid.Row="1"
@@ -131,8 +143,10 @@
 
                                 </Grid>
 
-                        </Border>
-                      
+                            </Border>
+
+                        </SwipeView>
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

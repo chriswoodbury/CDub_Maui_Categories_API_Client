@@ -23,6 +23,8 @@ public partial class DetailPage : ContentPage
         if (item.Id == 0)
         {
             lblPageHeading.Text = "Add New Category";
+            dltBorder.IsVisible = false;
+            dltButton.IsVisible = false;
         }
         else
         {
@@ -42,7 +44,7 @@ public partial class DetailPage : ContentPage
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        //await _todoService.DeleteTaskAsync(TodoItem);
+        await _categoryService.DeleteItemAsync(Category);
         await Navigation.PopAsync();
     }
 

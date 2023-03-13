@@ -73,5 +73,21 @@ namespace CDub_Maui_Categories_API_Client.Services
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
         }
+
+        public async Task DeleteItemAsync(Category category)
+        {
+            Uri uri = new Uri(string.Format(Constants.RestUrl, category.Id));
+
+            try
+            {
+                HttpResponseMessage response = await _client.DeleteAsync(uri);
+                if (response.IsSuccessStatusCode)
+                    Debug.WriteLine(@"\tCategory successfully deleted.");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+        }
     }
 }

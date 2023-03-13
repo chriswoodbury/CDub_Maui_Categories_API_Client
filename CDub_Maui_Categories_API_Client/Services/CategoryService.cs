@@ -10,7 +10,7 @@ namespace CDub_Maui_Categories_API_Client.Services
         {
             _restService = restService; 
         }
-
+       
         public Task<List<Category>> GetAllCategories()
         {
             return _restService.RefreshDataAsync();
@@ -25,5 +25,11 @@ namespace CDub_Maui_Categories_API_Client.Services
 
             return _restService.SaveItemAsync(category, isNewItem);
         }
+        
+        public Task DeleteItemAsync(Category category)
+        {
+            return _restService.DeleteItemAsync(category);
+        }
+
     }
 }

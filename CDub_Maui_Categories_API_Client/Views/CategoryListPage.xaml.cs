@@ -40,5 +40,8 @@ public partial class CategoryListPage : ContentPage
         collectionView.ItemsSource = await _categoryService.GetAllCategories();
     }
 
-   
+    private void SwipeItem_Clicked(object sender, EventArgs e)
+    {
+        
+    }
 }

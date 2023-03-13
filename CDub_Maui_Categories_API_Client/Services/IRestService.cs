@@ -12,5 +12,7 @@ namespace CDub_Maui_Categories_API_Client.Services
         Task<List<Category>> RefreshDataAsync();
 
         Task SaveItemAsync(Category category, bool isNewItem);
+
+        Task DeleteItemAsync(Category category);    
     }
 }
