@@ -1,5 +1,6 @@
 using CDub_Maui_Categories_API_Client.Models;
 using CDub_Maui_Categories_API_Client.Services;
+using CommunityToolkit.Maui.Alerts;
 
 namespace CDub_Maui_Categories_API_Client.Views;
 
@@ -38,6 +39,7 @@ public partial class CategoryListPage : ContentPage
     async void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         collectionView.ItemsSource = await _categoryService.GetAllCategories();
+        await Toast.Make("Category list refreshed", CommunityToolkit.Maui.Core.ToastDuration.Short, 14).Show();
     }
 
     private void SwipeItem_Clicked(object sender, EventArgs e)

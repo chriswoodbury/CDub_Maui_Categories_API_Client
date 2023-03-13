@@ -1,5 +1,6 @@
 ﻿using CDub_Maui_Categories_API_Client.Services;
 using CDub_Maui_Categories_API_Client.Views;
+using CommunityToolkit.Maui;
 
 namespace CDub_Maui_Categories_API_Client;
 
@@ -10,6 +11,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

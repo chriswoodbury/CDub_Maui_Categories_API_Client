@@ -1,6 +1,8 @@
 using CDub_Maui_Categories_API_Client.Models;
 using CDub_Maui_Categories_API_Client.Services;
 
+
+
 namespace CDub_Maui_Categories_API_Client.Views;
 
 public partial class DetailPage : ContentPage
