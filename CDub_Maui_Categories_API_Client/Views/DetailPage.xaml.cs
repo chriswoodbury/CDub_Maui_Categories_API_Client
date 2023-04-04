@@ -6,7 +6,6 @@ namespace CDub_Maui_Categories_API_Client.Views;
 
 public partial class DetailPage : ContentPage
 {
-
     ICategoryService _categoryService;
     bool isNewItem;
 
@@ -36,6 +35,13 @@ public partial class DetailPage : ContentPage
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(Category.Name) || Category.DisplayOrder == 0)
+        {
+            await DisplayAlert("Error", "Invalid data.  All fields are required", "Ok");
+            return;
+        }
+
+
         if (Category.Id == 0)
             isNewItem = true;
 

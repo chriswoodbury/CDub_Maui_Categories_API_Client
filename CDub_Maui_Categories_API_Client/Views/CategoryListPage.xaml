@@ -77,6 +77,12 @@
                           Offset="1.0" />
                 </LinearGradientBrush>
             </Border.Stroke>
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                Offset="20,20"
+                Radius="40"
+                Opacity="0.5" />
+            </Border.Shadow>
             <Label Text="REST API"
                    Padding="15"
               TextColor="White"
@@ -112,7 +118,7 @@
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="8,8,8,8" />
                                 </Border.StrokeShape>
-
+                                
                                 <Grid Padding="20,0,0,0" 
                                    ColumnDefinitions="0.50*, 0.50*" RowDefinitions="Auto, Auto">
 
