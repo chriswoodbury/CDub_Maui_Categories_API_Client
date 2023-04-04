@@ -37,7 +37,7 @@ public partial class DetailPage : ContentPage
     {
         if (string.IsNullOrEmpty(Category.Name) || Category.DisplayOrder == 0)
         {
-            await DisplayAlert("Error", "Invalid data.  All fields are required", "Ok");
+            await DisplayAlert("Error", "Invalid data.  All fields are required.", "Ok");
             return;
         }
 

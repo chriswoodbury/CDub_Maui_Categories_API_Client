@@ -41,9 +41,5 @@ public partial class CategoryListPage : ContentPage
         collectionView.ItemsSource = await _categoryService.GetAllCategories();
         await Toast.Make("Category list refreshed", CommunityToolkit.Maui.Core.ToastDuration.Short, 14).Show();
     }
-
-    private void SwipeItem_Clicked(object sender, EventArgs e)
-    {
-        
-    }
+   
 }

@@ -92,34 +92,24 @@
         </Border>
 
         <ScrollView>
-            <CollectionView x:Name="collectionView"
+            <CollectionView x:Name="collectionView" 
                     Margin="20"
                     SelectionMode="Single"
                     SelectionChanged="collectionView_SelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Category" >
 
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems Mode="Reveal">
-                                    <SwipeItem Text="Delete"
-                                       IconImageSource="delete.png"
-                                       BackgroundColor="Red"
-                                       Clicked="SwipeItem_Clicked" />
-                                   
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-
                             <Border Stroke="Indigo"
                              StrokeThickness="2"
                              Background="White"
                              Padding="16,18"
+                                    Margin="2,5"
                              HorizontalOptions="Center">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="8,8,8,8" />
                                 </Border.StrokeShape>
                                 
-                                <Grid Padding="20,0,0,0" 
+                                <Grid Padding="20,0,0,0"
                                    ColumnDefinitions="0.50*, 0.50*" RowDefinitions="Auto, Auto">
 
                                     <Label Text="Name:" 
@@ -147,12 +137,12 @@
                                             VerticalTextAlignment="Center" 
                                             HorizontalOptions="Center"/>
 
-                                </Grid>
-
+                                
+                            </Grid>
+                                 
                             </Border>
 
-                        </SwipeView>
-
+                      
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
