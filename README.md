@@ -1,1 +1,1 @@
-# CDub_Maui_Categories_API_Client
+# Maui Application - Web API - Category Maintenance
